@@ -24,4 +24,12 @@ public class TransformUtil : SingletonMonoBehaviour<TransformUtil> {
 
         return targetCamera.ScreenToWorldPoint(screenPos);
     }
+
+    public static Rect CameraArea {
+        get {
+            var areaHeight = TargetCamera.orthographicSize * 2;
+            var areaWidth = areaHeight * Screen.width / Screen.height;
+            return new Rect(-areaWidth / 2, -areaHeight / 2, areaWidth, areaHeight);
+        }
+    }
 }
