@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114523899693756666}
   - component: {fileID: 58396162391100782}
   - component: {fileID: 50111780678947262}
+  - component: {fileID: 114261356421981204}
   m_Layer: 9
   m_Name: PlayerShot
   m_TagString: Untagged
@@ -91,6 +92,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _velocity: {x: 0, y: 0}
+--- !u!114 &114261356421981204
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1628453406607126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0d28bcce70ed954ca86a76cde01ddd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attack: 100
+  _life: 10
 --- !u!114 &114523899693756666
 MonoBehaviour:
   m_ObjectHideFlags: 1
