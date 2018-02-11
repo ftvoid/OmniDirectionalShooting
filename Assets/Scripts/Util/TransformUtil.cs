@@ -9,8 +9,12 @@ public class TransformUtil : SingletonMonoBehaviour<TransformUtil> {
     [SerializeField]
     private Transform _targetTransform;
 
+    private Vector3 _initCameraPosition;
+
     public static Camera TargetCamera => Instance._targetCamera;
     public static Transform TargetTransform => Instance._targetTransform;
+
+    public static Vector3 InitCameraPosition => Instance._initCameraPosition;
 
     public static float PixelToWorld => GetPixelToWorld();
 
@@ -35,5 +39,11 @@ public class TransformUtil : SingletonMonoBehaviour<TransformUtil> {
             var areaWidth = areaHeight * Screen.width / Screen.height;
             return new Rect(-areaWidth / 2, -areaHeight / 2, areaWidth, areaHeight);
         }
+    }
+
+    protected override void Awake() {
+        base.Awake();
+
+        _initCameraPosition = TargetCamera.transform.position;
     }
 }

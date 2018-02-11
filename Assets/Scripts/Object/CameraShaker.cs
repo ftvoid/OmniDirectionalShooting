@@ -10,6 +10,18 @@ public class CameraShaker : MonoBehaviour {
     private float _strength = 1;
 
     private void Start() {
-        TransformUtil.TargetCamera.DOShakePosition(_duration, _strength);
+        TransformUtil
+            .TargetCamera
+            .DOShakePosition(_duration, _strength)
+            .OnComplete(OnAdjust);
+    }
+
+    private void OnAdjust() {
+        var targetCamera = TransformUtil.TargetCamera;
+
+        if ( targetCamera.transform.position != TransformUtil.InitCameraPosition ) {
+            targetCamera.transform
+                .DOMove(TransformUtil.InitCameraPosition, 1f);
+        }
     }
 }
