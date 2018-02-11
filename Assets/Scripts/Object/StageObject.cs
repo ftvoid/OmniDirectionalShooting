@@ -9,12 +9,14 @@ public class StageObject : MonoBehaviour {
     [SerializeField]
     private float _life = 100;
 
+    [SerializeField]
+    private GameObject _explosion;
+
     public void AddDamage(float attack) {
         _life -= attack;
 
         if ( _life <= 0 ) {
-            // TODO : 爆発処理実装
-            Destroy(gameObject);
+            OnExplode();
         }
     }
 
@@ -26,5 +28,13 @@ public class StageObject : MonoBehaviour {
 
         // 衝突対象にダメージを与える
         obj.AddDamage(_attack);
+    }
+
+    private void OnExplode() {
+        if ( _explosion != null ) {
+            Instantiate(_explosion, transform.position, _explosion.transform.rotation);
+        }
+
+        Destroy(gameObject);
     }
 }
