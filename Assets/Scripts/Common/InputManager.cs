@@ -11,6 +11,10 @@ public class InputManager : SingletonMonoBehaviour<InputManager> {
     public struct DragParam {
         public Vector2 Position;
         public Vector2 Delta;
+
+        public override string ToString() {
+            return string.Format("Position : {0}, Delta : {1}", Position.ToString(), Delta.ToString());
+        }
     }
 
     private Subject<Unit> _onDown = new Subject<Unit>();
@@ -43,6 +47,9 @@ public class InputManager : SingletonMonoBehaviour<InputManager> {
     private void OnPressChanged(bool isPressed) {
         if ( isPressed ) {
             _onDown.OnNext(Unit.Default);
+
+            _dragDelta = Vector2.zero;
+            _prevPosition = Position;
         } else {
             _onUp.OnNext(Unit.Default);
         }
