@@ -6,7 +6,11 @@ public class TransformUtil : SingletonMonoBehaviour<TransformUtil> {
     [SerializeField]
     private Camera _targetCamera;
 
+    [SerializeField]
+    private Transform _targetTransform;
+
     public static Camera TargetCamera => Instance._targetCamera;
+    public static Transform TargetTransform => Instance._targetTransform;
 
     public static float PixelToWorld => GetPixelToWorld();
 
@@ -22,7 +26,7 @@ public class TransformUtil : SingletonMonoBehaviour<TransformUtil> {
             targetCamera = Instance._targetCamera;
         }
 
-        return targetCamera.ScreenToWorldPoint(screenPos);
+        return new Vector2(screenPos.x - Screen.width / 2, screenPos.y - Screen.height / 2) * PixelToWorld;
     }
 
     public static Rect CameraArea {
