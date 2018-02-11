@@ -4,6 +4,9 @@ using UnityEngine;
 using UniRx;
 
 public class PlayerMover : MonoBehaviour {
+    [SerializeField]
+    private float _movableAreaMargin = 0.5f;
+
     public Vector2 Direction {
         get {
             var angle = transform.rotation.eulerAngles.z;
@@ -20,6 +23,18 @@ public class PlayerMover : MonoBehaviour {
     }
 
     private void OnMove(InputManager.DragParam param) {
-        transform.position += (Vector3)param.Delta * TransformUtil.PixelToWorld;
+        var pos = transform.position + (Vector3)param.Delta * TransformUtil.PixelToWorld;
+
+        var area = TransformUtil.CameraArea;
+        area.xMin += _movableAreaMargin;
+        area.yMin += _movableAreaMargin;
+        area.xMax -= _movableAreaMargin;
+        area.yMax -= _movableAreaMargin;
+
+        pos = new Vector3(
+            Mathf.Clamp(pos.x, area.xMin, area.xMax),
+            Mathf.Clamp(pos.y, area.yMin, area.yMax));
+
+        transform.position = pos;
     }
 }
