@@ -141,8 +141,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemy: {fileID: 1352007849665474, guid: 503b9fe3c9f9a5943a4b8fea309b0ac1, type: 2}
-  _delay: 5
-  _interval: 10
+  _delay: 2
+  _interval: 2
 --- !u!4 &1029201853
 Transform:
   m_ObjectHideFlags: 0
@@ -208,7 +208,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -336,7 +336,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shot: {fileID: 114194111331560326, guid: 9d3795a3d510e16478277e6f3e5fbb84, type: 2}
   _reloadTime: 0.5
-  _shootSpeed: 10
+  _shootSpeed: 20
 --- !u!1 &1602346478
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,9 +488,9 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.485
+  m_Radius: 0.97
